@@ -1,4 +1,13 @@
 namespace PlanetGame.Abstractions;
+public abstract record Result<T>
+{
+    public sealed record Success(T Value) : Result<T>{}
+
+    public sealed record Fail(Exception Error) : Result<T>;
+
+    public static implicit operator bool(Result<T> result)
+        => result is Success;
+}
 
 public static class Result
 {
@@ -28,28 +37,36 @@ public static class Result
             return Failure<T>(e);
         }
     }
+
+    public static Result<TResult> Try<TResult>(Func<Result<TResult>> func)
+    {
+        try
+        {
+            return func();
+        }
+        catch (Exception e)
+        {
+            return Failure<TResult>(e);
+        }
+    }
 }
 
-public abstract record Result<T>
-{
-    public sealed record Success(T Value) : Result<T>{}
-
-    public sealed record Fail(Exception Error) : Result<T>;
-
-    public static implicit operator bool(Result<T> result)
-        => result is Success;
-}
 
 public static class ResultExtensions
 {
     public static Result<TResult> Select<T, TResult>(this Result<T> result, Func<T, TResult> transform)
     {
-        return result switch
+        var tryResult = Result.Try(() =>
         {
-            Result<T>.Success success => Result.Success(transform(success.Value)),
-            Result<T>.Fail fail => Result.Failure<TResult>(fail.Error),
-            _ => throw new InvalidOperationException("Unknown StoreResult type.")
-        };
+            return result switch
+            {
+                Result<T>.Success success => Result.Success(transform(success.Value)),
+                Result<T>.Fail fail => Result.Failure<TResult>(fail.Error),
+                _ => throw new InvalidOperationException("Unknown StoreResult type.")
+            };
+        });
+
+        return tryResult;
     }
 
     public static async ValueTask<Result<TResult>> Select<T, TResult>(this ValueTask<Result<T>> task, Func<T, Task<TResult>> transform)
