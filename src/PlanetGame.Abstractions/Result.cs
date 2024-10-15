@@ -3,7 +3,31 @@ namespace PlanetGame.Abstractions;
 public static class Result
 {
     public static Result<T> Success<T>(T value) => new Result<T>.Success(value);
-    public static Result<T> Fail<T>(Exception error) => new Result<T>.Fail(error);
+    public static Result<T> Failure<T>(Exception error) => new Result<T>.Fail(error);
+    
+    public static Result<T> Try<T>(Func<T> func)
+    {
+        try
+        {
+            return Success(func());
+        }
+        catch (Exception e)
+        {
+            return Failure<T>(e);
+        }
+    }
+    
+    public static async ValueTask<Result<T>> Try<T>(Func<ValueTask<T>> func)
+    {
+        try
+        {
+            return Success(await func());
+        }
+        catch (Exception e)
+        {
+            return Failure<T>(e);
+        }
+    }
 }
 
 public abstract record Result<T>
@@ -23,7 +47,7 @@ public static class ResultExtensions
         return result switch
         {
             Result<T>.Success success => Result.Success(transform(success.Value)),
-            Result<T>.Fail fail => Result.Fail<TResult>(fail.Error),
+            Result<T>.Fail fail => Result.Failure<TResult>(fail.Error),
             _ => throw new InvalidOperationException("Unknown StoreResult type.")
         };
     }
@@ -35,7 +59,7 @@ public static class ResultExtensions
         return result switch
         {
             Result<T>.Success success => Result.Success(await transform(success.Value)),
-            Result<T>.Fail fail => Result.Fail<TResult>(fail.Error),
+            Result<T>.Fail fail => Result.Failure<TResult>(fail.Error),
             _ => throw new InvalidOperationException("Unknown StoreResult type.")
         };
     }
@@ -45,7 +69,7 @@ public static class ResultExtensions
         return result switch
         {
             Result<T>.Success success => Result.Success(await transform(success.Value)),
-            Result<T>.Fail fail => Result.Fail<TResult>(fail.Error),
+            Result<T>.Fail fail => Result.Failure<TResult>(fail.Error),
             _ => throw new InvalidOperationException("Unknown StoreResult type.")
         };
     }
