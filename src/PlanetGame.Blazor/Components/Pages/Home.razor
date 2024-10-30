@@ -4,21 +4,26 @@
 <MudContainer Class="mt-4 px-8" MaxWidth="MaxWidth.False">
     <MudGrid>
         <MudItem xs="12" sm="6" md="4">
-            <MudCard Style="height: 200px;">
+            <MudCard>
                 <MudCardContent>
                     <MudText Typo="Typo.h6">Current Players</MudText>
-                    <MudText Typo="Typo.body2">The quick, brown fox jumps over a lazy dog.</MudText>
+                    <MudText Class="pa-4" Align="Align.Center" Typo="Typo.h4">146</MudText>
                 </MudCardContent>
-                <MudCardActions>
-                    <MudButton Variant="Variant.Text" Color="Color.Primary">Learn More</MudButton>
-                </MudCardActions>
             </MudCard>
-        </MudItem>
-        <MudItem xs="12" sm="6" md="4">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
-        </MudItem>
-        <MudItem xs="12" sm="12" md="4">
-            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+        </MudItem><MudItem xs="12" sm="6" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Active Workers</MudText>
+                    <MudText Class="pa-4" Align="Align.Center" Typo="Typo.h4">1,425</MudText>
+                </MudCardContent>
+            </MudCard>
+        </MudItem><MudItem xs="12" sm="6" md="4">
+            <MudCard>
+                <MudCardContent>
+                    <MudText Typo="Typo.h6">Idle Workers</MudText>
+                    <MudText Class="pa-4" Align="Align.Center" Typo="Typo.h4">364</MudText>
+                </MudCardContent>
+            </MudCard>
         </MudItem>
         <MudItem xs="12" sm="6">
             <MudGrid>
@@ -26,12 +31,13 @@
                     <MudCard>
                         <MudCardHeader>
                             <CardHeaderContent>
-                                <MudText Typo="Typo.h6">Breaking: Collapsed Mine</MudText>
+                                <MudText Typo="Typo.h6">Breaking News: Collapsed Mine</MudText>
                             </CardHeaderContent>
                         </MudCardHeader>
                         <MudCardContent>
-                            <MudText>Tony is stuck in a mine and his workers are out of go-go juice..</MudText>
-                            <MudText Typo="Typo.body2">The quick, brown fox jumps over a lazy dog. The quick, brown fox jumps over a lazy dog. The quick, brown fox jumps over a lazy dog.</MudText>
+                            <MudCardMedia Image="/assets/img/mine1.jpeg" Height="200" />
+                            <MudText Class="py-2">Tony's workers are out of go-go juice..</MudText>
+                            <MudText Class="d-flex align-content-center" Typo="Typo.body2">Tony's workers are costing congestion in the mine shafts. Unless something is done soon, Tony is going to have another thing coming.</MudText>
                         </MudCardContent>
                         <MudCardActions>
                             <MudButton Variant="Variant.Text" Color="Color.Primary">Read More</MudButton>

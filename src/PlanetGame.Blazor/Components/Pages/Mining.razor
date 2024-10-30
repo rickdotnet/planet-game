@@ -1,6 +1,27 @@
 @page "/mining"
-<h3>Mining</h3>
 
-@code {
-    
-}
+<PageTitle>Home</PageTitle>
+<MudContainer Class="mt-4 px-8" MaxWidth="MaxWidth.False">
+    <MudGrid>
+        <MudItem xs="12" sm="6">
+            <MudLink Href="/mines/solaris-shafts">
+                <MudCard>
+                    <MudCardContent>
+                        <MudText Typo="Typo.h6">Solaris Shafts</MudText>
+                        <MudCardMedia Class="my-2" Image="/assets/img/mine1.jpeg" Height="300"/>
+                    </MudCardContent>
+                </MudCard>
+            </MudLink>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudLink Href="/mines/rusted-owl-mines">
+                <MudCard>
+                    <MudCardContent>
+                        <MudText Typo="Typo.h6">Rusted Owl Mines</MudText>
+                        <MudCardMedia Class="my-2" Image="/assets/img/mine2.jpeg" Height="300"/>
+                    </MudCardContent>
+                </MudCard>
+            </MudLink>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
