@@ -1,12 +1,14 @@
-using Microsoft.FluentUI.AspNetCore.Components;
+using MudBlazor.Services;
 using PlanetGame.Blazor.Components;
 
 var builder = WebApplication.CreateBuilder(args);
 
+// Add MudBlazor services
+builder.Services.AddMudServices();
+
 // Add services to the container.
 builder.Services.AddRazorComponents()
     .AddInteractiveServerComponents();
-builder.Services.AddFluentUIComponents();
 
 var app = builder.Build();
 
