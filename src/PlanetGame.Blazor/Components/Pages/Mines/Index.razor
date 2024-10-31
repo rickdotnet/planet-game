@@ -1,7 +1,98 @@
 @page "/mines/{id}"
-<h3>Mine - @Id</h3>
+<PageTitle>Mines</PageTitle>
+<MudContainer Class="mt-4 px-8" MaxWidth="MaxWidth.False">
+    <MudGrid>
+        <MudItem xs="12" sm="6" md="4">
+            <MudCard>
+                <MudCardHeader>
+                    <CardHeaderAvatar>
+                        <MudAvatar>
+                            <MudIcon Icon="@Icons.Material.Filled.Handyman" Size="Size.Large"/>
+                        </MudAvatar>
+                    </CardHeaderAvatar>
+                    <CardHeaderContent>
+                        <MudText Typo="Typo.body1">@Id</MudText>
+                        <MudText Typo="Typo.body2">Minister of Mining</MudText>
+                    </CardHeaderContent>
+                    <CardHeaderActions>
+                        <MudIconButton Icon="@Icons.Material.Filled.Settings" Color="Color.Default"/>
+                    </CardHeaderActions>
+                </MudCardHeader>
+                <MudCardMedia Image="assets/img/mine1.jpeg" Height="250"/>
+            </MudCard>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudCard>
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6">Current Workers</MudText>
+                            <MudText Class="pa-4" Align="Align.Center" Typo="Typo.h4">6,452</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudCard>
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6">Available Mines</MudText>
+                            <MudText Class="pa-4" Align="Align.Center" Typo="Typo.h4">2</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudCard>
+                        <MudCardContent>
+                            <MudText Typo="Typo.h6">Daily Income</MudText>
+                            <MudText Class="pa-4" Align="Align.Center" Typo="Typo.h4">$36,452</MudText>
+                        </MudCardContent>
+                    </MudCard>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudPaper Class="pa-4">
+                        <MudText Typo="Typo.h6">Actions</MudText>
+                        <MudStack Class="my-2">
+                            <MudButton Variant="Variant.Filled" Color="Color.Primary">Request Mining Rights</MudButton>
+                            <MudButton Variant="Variant.Outlined" Color="Color.Secondary">Abandon Mine</MudButton>
+                        </MudStack>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudGrid>
+                <MudItem xs="12">
+                    <MudPaper Class="pa-4" Style="height: 200px">
+                            <MudText Typo="Typo.h6">Sector One</MudText>
+                    </MudPaper>
+                </MudItem>
+                <MudItem xs="12">
+                    <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;">
+                        <MudText Typo="Typo.h6">Sector Two</MudText>
+                    </MudPaper>
+                </MudItem>
+            </MudGrid>
+        </MudItem>
+        <MudItem xs="12" sm="6">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 100%">
+                <MudText Typo="Typo.h6">Sector 69</MudText>
+            </MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="6" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+        </MudItem>
+        <MudItem xs="12" sm="12" md="4">
+            <MudPaper Elevation="2" Class="pa-4" Style="height: 200px;"></MudPaper>
+        </MudItem>
+    </MudGrid>
+</MudContainer>
 
 @code {
-    [Parameter]
-    public string? Id { get; set; }
+    [Parameter] public string? Id { get; set; }
 }
